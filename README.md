@@ -60,3 +60,11 @@ ES6转ES5
     @types/lodash
 参考:
 http://microsoft.github.io/TypeSearch/
+
+7.编译图片
+
+插件安装：
+    file-loader
+    url-loader
+两个插件的功能基本一样，url-loader更强大一点
+limit的值是限制是否转换成base64

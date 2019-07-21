@@ -1,5 +1,6 @@
-var name = "zhcaer";
-let email = "1775724868@qq.com";
-const say = new Promise((resolve, reject) => {
-    console.log(name, email)
-});
+import avatar from '../public/images/timg2.jpg';
+
+var dom = document.getElementById("app");
+var img = new Image();
+img.src = avatar;
+dom.appendChild(img);
