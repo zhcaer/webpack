@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -93,7 +93,18 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var name = \"zhcaer\";\r\nlet email = \"1775724868@qq.com\";\r\nconst say = new Promise((resolve, reject) => {\r\n    console.log(name, email)\r\n});\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("var name = \"zhcaer\";\nvar email = \"1775724868@qq.com\";\nvar say = new Promise(function (resolve, reject) {\n  console.log(name, email);\n});\n\n//# sourceURL=webpack:///./src/main.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!***************************!*\
+  !*** multi ./src/main.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./src/main.js */\"./src/main.js\");\n\n\n//# sourceURL=webpack:///multi_./src/main.js?");
 
 /***/ })
 

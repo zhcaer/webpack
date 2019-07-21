@@ -1,0 +1,8 @@
+#root {
+  .container {
+    div:nth-of-type(1){
+      background: red;
+      transform: (50px, 150px);
+    }
+  }
+}
