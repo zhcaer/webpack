@@ -68,3 +68,13 @@ http://microsoft.github.io/TypeSearch/
     url-loader
 两个插件的功能基本一样，url-loader更强大一点
 limit的值是限制是否转换成base64
+
+8.编译CSS、SASS、图标
+
+css插件安装:
+    css-loader
+    style-loader
+sass插件安装:
+    sass-loader
+    node-sass
+
