@@ -48,3 +48,15 @@ ES6转ES5
 按需转换配置:
     sueBiltIns:"usage"
 可以指定兼容浏览器编译，垫片库是不支持IE8及以下浏览器的
+
+6.编译TS
+
+参考：https://webpack.js.org/guides/typescript/
+安装插件：
+    typescript
+    ts-loader
+
+类型定义:
+    @types/lodash
+参考:
+http://microsoft.github.io/TypeSearch/

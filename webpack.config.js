@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 var { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
     mode: "development",
-    entry: ["./src/main.js"],
+    entry: ["./src/pages/Home.ts"],
     output: {
         path: path.resolve(__dirname, "./build"),
         filename: "[name].js",
@@ -17,8 +17,16 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 }
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
             }
         ]
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ]
     },
     plugins:[
         new HtmlWebpackPlugin({
