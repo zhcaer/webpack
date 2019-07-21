@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack src/main.js -o build/build.js --mode development"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "1775724868@qq.com",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  }
 }
