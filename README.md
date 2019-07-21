@@ -32,3 +32,12 @@ ES6转ES5
     dev: "webpack-dev-server"(自动用本地服务器打开)
     build: "webpack --config ./webpack.config.js"(指定用webpack.config.js配置文件编译)
 可以将ES6转换成ES5，但内置的API如Promise还不能转换
+
+4.拆分配置文件、局部垫片
+拆分webpack.config.js文件的options为.babelrc文件
+局部垫片插件
+    @babel/runtime
+    @babel/plugin-transform-runtime
+    @babel/runtime-corejs2
+参考网站:https://babeljs.io/docs/en/babel-plugin-transform-runtime
+局部垫片一般适用开发插件，开发项目时应使用全局垫片@babel/polyfill
