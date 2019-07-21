@@ -39,5 +39,12 @@ ES6转ES5
     @babel/runtime
     @babel/plugin-transform-runtime
     @babel/runtime-corejs2
-参考网站:https://babeljs.io/docs/en/babel-plugin-transform-runtime
+参考网站:https://babeljs.io/docs/en/babel-plugin-transform-runtime 
 局部垫片一般适用开发插件，开发项目时应使用全局垫片@babel/polyfill
+
+5.全局垫片库
+    @babel/polyfill
+    babel官网:https://babeljs.io/docs/en/babel-polyfill
+按需转换配置:
+    sueBiltIns:"usage"
+可以指定兼容浏览器编译，垫片库是不支持IE8及以下浏览器的
