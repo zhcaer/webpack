@@ -1,8 +1,15 @@
 @import "./common.css";
 
+#app {
+    transform: translate(300px, 10px);
+}
 img {
     width: 100%;
     height: 100%;
     border: 1px solid blue;
+}
+
+div:nth-of-type(odd){
+    background: deepskyblue;
 }
 

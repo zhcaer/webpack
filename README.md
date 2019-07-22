@@ -78,3 +78,36 @@ sass插件安装:
     sass-loader
     node-sass
 
+给css3加前缀：
+    插件安装：
+    postcss-loader
+    autoprefixer
+
+9.配置拆分、全局变量注入、反向代理
+
+配置拆分：
+    安装插件：webpack-merge
+
+全局变量注入:
+
+第一种方法：
+    插件安装：
+        expose-loader
+
+第二种方法：
+    使用webpack.ProvidePlugin内置插件
+
+反向代理:
+    配置devServer的proxy或者后台用cors插件或配置
+    //CORS跨域后台配置
+    app.all('*', function(req, res, next){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By", "3.2.1");
+        res.header("Content-Type", "application/json;charset=utf-8");
+        next();
+    });
+
+
+

@@ -1,10 +1,10 @@
-var avatar = require("../../public/images/timg.jpg");
+var avatar = require("../../public/images/timg2.jpg");
 function Avatar(){
-    var dom = document.getElementById("app");
+    var app = document.getElementById("app");
     var img = new Image();
     img.src = avatar;
     img.classList.add("avatar");
-    dom.appendChild(img)
+    app.appendChild(img)
 }
 
 export default Avatar;
