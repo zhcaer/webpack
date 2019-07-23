@@ -4,5 +4,6 @@
         "targets": {
             "ie": 9
         }
-    }]]
+    }]],
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
 }

@@ -98,16 +98,44 @@ sass插件安装:
     使用webpack.ProvidePlugin内置插件
 
 反向代理:
+
     配置devServer的proxy或者后台用cors插件或配置
+
     //CORS跨域后台配置
+
     app.all('*', function(req, res, next){
+
         res.header("Access-Control-Allow-Origin", "*");
+
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
         res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+
         res.header("X-Powered-By", "3.2.1");
+
         res.header("Content-Type", "application/json;charset=utf-8");
+
         next();
+
     });
 
+10.代码分割：
+
+代码分割和webpack无关，用来提升性能
+
+2.动态导入：通过模块的懒加载调用来分离代码
+
+    插件安装:
+        @babel/plugin-syntax-dynamic-import
+
+        参考：https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import
+
+        .babelrc文件加入"plugins": ["@babel/plugin-syntax-dynamic-import"]
+
+3.防止重复：使用SplitChunksPlugin去重和分离chunk
+
+    插件安装：split-chunks-plugin
+    加入optimization配置
+    参考:https://webpack.js.org/plugins/split-chunks-plugin/
 
 
