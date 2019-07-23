@@ -186,3 +186,10 @@ sass插件安装:
 改写脚本统一打开一个配置文件
 
     改写配置文件
+
+13.转换Vue
+    安装插件:
+    vue
+    vue-template-compiler
+    vue-loader
+    vue-loader/lib/plugin

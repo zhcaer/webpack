@@ -8,6 +8,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserJSPlugin = require('terser-webpack-plugin');
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
+
 const commConfig = {
     entry: ["./src/main.js"],
     module: {
@@ -64,13 +66,17 @@ const commConfig = {
                     MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
+            },
+            {
+                test:/\.vue$/,
+                loader:"vue-loader"
             }
         ]
     },
     resolve:{
         extensions: ['.tsx' ,'.ts', '.js','.vue','.json'],// 扩展名省略配置
         alias:{
-            "@":path.resolve(__dirname,"../src")
+            "@": path.resolve(__dirname,"../src")
         }
     },
     plugins:[
@@ -87,6 +93,7 @@ const commConfig = {
             chunkFilename: '[id].css',
             ignoreOrder: false,
         }),
+        new VueLoaderPlugin(),
     ],
     optimization: { //代码分割
         splitChunks: {

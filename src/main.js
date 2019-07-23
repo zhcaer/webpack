@@ -1,8 +1,6 @@
-import "./index.css"
-import "./a.css"
-document.addEventListener("click",()=>{ //按需加载分割的1.js
-    import("./pages/a.js").then(({default: func})=>{
-        func()
-    })
-})
-
+import Vue from "vue"
+import App from "@/App"
+new Vue({
+    el:"#app",
+    render: h =>h(App)
+});
