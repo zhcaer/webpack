@@ -3,3 +3,4 @@ document.addEventListener("click",()=>{ //按需加载分割的1.js
         func()
     })
 })
+

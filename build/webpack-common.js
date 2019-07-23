@@ -90,7 +90,7 @@ module.exports = {
             maxAsyncRequests: 5, // 异步加载时同时发送的请求数量不能超过5个，超过5个的部分不拆分
             maxInitialRequests: 3,// 页面初始化时同时发送的请求数量最大不能超过3个，超过的3个部分就不拆分
             automaticNameDelimiter: '-', //打包出来的文件名的默认连接符
-            automaticNameMaxLength: 30, // 文件名最长不能超过30个字符
+            //automaticNameMaxLength: 60, // 文件名最长不能超过30个字符
             name: true,  // 拆分的chunk名，true 表示根据模块名和CacheGroup组的key来自动生成，使用上面的连接符
             cacheGroups: { // 缓存配置：一个文件内import多个库，如果需要将多个库打包在一个文件内就要缓存,所以命名为缓存组
                 vendors: {

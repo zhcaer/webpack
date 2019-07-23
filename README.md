@@ -160,4 +160,10 @@ sass插件安装:
     加入optimization配置
     参考:https://webpack.js.org/plugins/split-chunks-plugin/
 
+11.打包分析
 
+    1.脚本加入  --profile --json  生成stats.json，就是我们分析打包流程的文件，对打包过程的一个描述
+    2.插件安装：
+        参考:https://github.com/webpack-contrib/webpack-bundle-analyzer
+        webpack-bundle-plugin(webpack-bundle-analyzer)
+    
