@@ -167,3 +167,22 @@ sass插件安装:
         参考:https://github.com/webpack-contrib/webpack-bundle-analyzer
         webpack-bundle-plugin(webpack-bundle-analyzer)
     
+12.css压缩
+
+    参考:https://webpack.js.org/plugins/mini-css-extract-plugin/
+    插件安装：
+    mini-css-extract-plugin
+    optimize-css-assets-webpack-plugin(压缩css)
+    terser-webpack-plugin
+    optimize-css-assets-webpack-plugin插件会重写js的压缩文件，所以要安装terser-webpack-plugin插件
+
+解决浏览器的文件缓存：
+
+    output: {
+        filename: "[name].[contenthash].js",
+        chunkFilename: "[name].[contenthash].js",
+    }
+
+改写脚本统一打开一个配置文件
+
+    改写配置文件

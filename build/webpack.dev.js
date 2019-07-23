@@ -1,8 +1,11 @@
-var merge = require("webpack-merge");
-var commConfig = require("./webpack-common");
+const path = require("path");
 const devConfig = {
     mode: "development",
     devtool: "cheap-module-eval-source-map",
+    output: {
+        filename: "[name].js",
+        path: path.resolve(__dirname, "../dist/")
+    },
     devServer: {
         contentBase: "./main.js",
         port: 3000,
@@ -10,5 +13,4 @@ const devConfig = {
         hot: true,
     },
 };
-
-module.exports = merge(commConfig, devConfig);
+module.exports  = devConfig;

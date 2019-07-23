@@ -1,11 +1,14 @@
-var merge = require("webpack-merge");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var commConfig = require("./webpack-common");
-const prodConfig = {
+const path = require("path");
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+module.exports = {
     mode: "production",
-    devtool: "cheap-module-source-map",
+    output: {
+        filename: "[name].[contenthash].js",
+        chunkFilename: "[name].[contenthash].js",
+        path: path.resolve(__dirname, '../dist')
+    },
+    // devtool: "cheap-module-source-map",
     plugins: [
-        new BundleAnalyzerPlugin()  //打包分析
+        // new BundleAnalyzerPlugin()  //打包分析
     ]
 };
-module.exports = merge(commConfig, prodConfig);

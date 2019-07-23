@@ -1,13 +1,15 @@
-var webpack = require('webpack');
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var { CleanWebpackPlugin } = require("clean-webpack-plugin");
-module.exports = {
+const webpack = require('webpack');
+const path = require("path");
+const devConfig = require("./webpack.dev.js");
+const prodConfig = require("./webpack.prod.js");
+const merge = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserJSPlugin = require('terser-webpack-plugin');
+const commConfig = {
     entry: ["./src/main.js"],
-    output: {
-        path: path.resolve(__dirname, "../dist/"),
-        filename: "[name].js",
-    },
     module: {
         rules: [
             {
@@ -51,7 +53,7 @@ module.exports = {
             {
                 test: /\.(sc|sa)ss$/,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
                 ]
@@ -59,7 +61,7 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
             }
@@ -79,7 +81,12 @@ module.exports = {
         new webpack.ProvidePlugin({ //注入全局变量
             $ : "jquery",
             jQuery: "jquery"
-        })
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false,
+        }),
     ],
     optimization: { //代码分割
         splitChunks: {
@@ -103,6 +110,15 @@ module.exports = {
                     reuseExistingChunk: true // 当main.js引入 a.js,b.js, 但是a 中引入了b，就会重复引用，属性为true时就不会重复打包b.js
                 }
             }
-        }
+        },
+        minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsWebpackPlugin({})]
+    }
+};
+
+module.exports = (env) => {
+    if(env && env.production){
+        return merge(commConfig, prodConfig)
+    }else {
+        return merge(commConfig, devConfig)
     }
 };
