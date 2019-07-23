@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require("fs");
 const path = require("path");
 const devConfig = require("./webpack.dev.js");
 const prodConfig = require("./webpack.prod.js");
@@ -9,7 +10,42 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserJSPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const AddAssetHtmlWebpackPlugin = require("add-asset-html-webpack-plugin");
 
+const plugins = [
+    new HtmlWebpackPlugin({ //自动生成HTML
+        template: "./index.html"
+    }),
+    new CleanWebpackPlugin(),   //自动清除build目录
+    new webpack.ProvidePlugin({ //注入全局变量
+        $ : "jquery",
+        jQuery: "jquery"
+    }),
+    new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+        ignoreOrder: false,
+    }),
+    new VueLoaderPlugin()
+];
+
+const files = fs.readdirSync(path.resolve(__dirname, "../dll"));
+files.forEach(fileName=>{
+    if(/.*\.dll\.js/.test(fileName)){
+        plugins.push(
+            new AddAssetHtmlWebpackPlugin({
+                filepath:path.resolve(__dirname,"../dll",fileName)
+            })
+        )
+    }
+    if(/.*\.mainfest\.json/.test(fileName)){
+        plugins.push(
+            new webpack.DllReferencePlugin({
+                manifest:path.resolve(__dirname, "../dll", fileName)
+            })
+        )
+    }
+})
 const commConfig = {
     entry: ["./src/main.js"],
     module: {
@@ -17,9 +53,15 @@ const commConfig = {
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                use: [
+                    // {    //开启多线程
+                    //     loader: "thread-loader",
+                    //     options: {
+                    //         workers: 2
+                    //     }
+                    // },
+                    'babel-loader'
+                ]
             },
             {
                 test: /\.tsx?$/,
@@ -79,22 +121,7 @@ const commConfig = {
             "@": path.resolve(__dirname,"../src")
         }
     },
-    plugins:[
-        new HtmlWebpackPlugin({ //自动生成HTML
-            template: "index.html"
-        }),
-        new CleanWebpackPlugin(),   //自动清除build目录
-        new webpack.ProvidePlugin({ //注入全局变量
-            $ : "jquery",
-            jQuery: "jquery"
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-            ignoreOrder: false,
-        }),
-        new VueLoaderPlugin(),
-    ],
+    plugins: plugins,
     optimization: { //代码分割
         splitChunks: {
             chunks: 'all', // 3个值async initial， all,针对异步，同步，所有代码做分割

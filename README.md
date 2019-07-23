@@ -193,3 +193,17 @@ sass插件安装:
     vue-template-compiler
     vue-loader
     vue-loader/lib/plugin
+
+14.打包优化
+
+    插件安装：
+    add-asset-html-webpack-plugin
+    webpack.DllReferencePlugin(webpack内置插件)
+    webpack.DllPlugin(webpack内置插件)
+
+    打包步骤:先运行dll脚本，再运行build;
+
+    开启多线程打包：
+        happy-pack
+        thread-loader
+    除非项目很大或特殊情况，不然没必要开启多线程打包
